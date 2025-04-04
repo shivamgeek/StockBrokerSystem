@@ -1,6 +1,9 @@
 const Redis = require("ioredis");
 
-const redis = new Redis();
+const redis = new Redis({
+  host: "redis-service", // This matches the service name in docker-compose.yml
+  port: 6379,
+});
 const channelName = "stocks-channel";
 
 const stocks = ["AAPL", "MSFT", "AMZN", "GOOGL"];

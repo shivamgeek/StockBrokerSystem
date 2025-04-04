@@ -1,7 +1,10 @@
 const Redis = require("ioredis");
 const WebSocket = require("ws");
 
-const redis = new Redis();
+const redis = new Redis({
+  host: "redis-service", // This matches the service name in docker-compose.yml
+  port: 6379,
+});
 const channelName = "stocks-channel";
 
 const wss = new WebSocket.Server({ port: 8080 });
