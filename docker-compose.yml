@@ -27,6 +27,6 @@ services:
     ports:
       - "5173:5173"
     depends_on:
-      - broker-server
+      - broker-service
       - publisher-service
       - redis
