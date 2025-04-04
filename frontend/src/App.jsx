@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 
 export default function App() {
   const [stockData, setStockData] = useState({});
+  const [lastUpdated, setLastupdated] = useState();
 
   useEffect(() => {
     const ws = new WebSocket(
-      "ws://ip172-18-0-201-cvnpbhq91nsg0096nuqg-8080.direct.labs.play-with-docker.com/"
+      "ws://ip172-18-0-101-cvnuuf8l2o9000cd2un0-8080.direct.labs.play-with-docker.com/"
     );
 
     ws.onmessage = (event) => {
       const { company, price, timestamp } = JSON.parse(event.data);
       setStockData((prev) => ({ ...prev, [company]: { price, timestamp } }));
+      setLastupdated(timestamp);
     };
 
     return () => ws.close();
@@ -21,6 +23,7 @@ export default function App() {
       <h1 className="text-3xl font-bold mb-6 text-center">
         📈 Real-Time Stock Prices
       </h1>
+      <h2>Last Update: {lastUpdated}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {Object.entries(stockData).map(([company, { price, timestamp }]) => (
           <div
