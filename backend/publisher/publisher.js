@@ -18,7 +18,7 @@ function generateStockData() {
   const data = JSON.stringify({
     company: stocks[company],
     price,
-    timestamp: new Date().getDate().toLocaleString(),
+    timestamp: new Date().toLocaleTimeString(),
   });
   return data;
 }
