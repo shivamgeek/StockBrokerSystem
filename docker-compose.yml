@@ -15,9 +15,15 @@ services:
     depends_on:
       - redis-service
 
-  publisher-service:
+  publisher-service1:
     build: ./backend/publisher
-    container_name: publisher-container
+    container_name: publisher-container1
+    depends_on:
+      - redis-service
+
+  publisher-service2:
+    build: ./backend/publisher
+    container_name: publisher-container2
     depends_on:
       - redis-service
 
