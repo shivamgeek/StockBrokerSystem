@@ -1,9 +1,9 @@
 const Redis = require("ioredis");
 
-// const redis = new Redis({
-//   host: "redis-service", // This matches the service name in docker-compose.yml
-//   port: 6379,
-// });
+const redis = new Redis({
+  host: "redis-service", // This matches the service name in docker-compose.yml
+  port: 6379,
+});
 const channelName = "stocks-channel";
 
 const stocks = ["AAPL", "MSFT", "AMZN", "GOOGL"];
@@ -25,6 +25,6 @@ function generateStockData() {
 
 setInterval(() => {
   const data = generateStockData();
-  // redis.publish(channelName, data);
+  redis.publish(channelName, data);
   console.log(`Published ${data} to ${channelName}`);
-}, 5000);
+}, 8000);

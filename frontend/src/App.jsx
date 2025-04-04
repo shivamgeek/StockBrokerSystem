@@ -4,7 +4,9 @@ export default function App() {
   const [stockData, setStockData] = useState({});
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8080");
+    const ws = new WebSocket(
+      "ws://ip172-18-0-201-cvnpbhq91nsg0096nuqg-8080.direct.labs.play-with-docker.com/"
+    );
 
     ws.onmessage = (event) => {
       const { company, price, timestamp } = JSON.parse(event.data);
