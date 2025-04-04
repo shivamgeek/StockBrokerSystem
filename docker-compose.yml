@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis
+    container_name: redis
+    # ports:
+    #   - "6379:6379"
+
+  broker-service:
+    build: ./backend/broker
+    container_name: broker-container
+    # ports:
+    #   - "8080:8080"
+    depends_on:
+      - redis
+
+  publisher-service:
+    build: ./backend/publisher
+    container_name: publisher-container
+    depends_on:
+      - redis
+
+  frontend-service:
+    build: ./frontend
+    container_name: frontend-container
+    ports:
+      - "5173:5173"
+    depends_on:
+      - broker-server
+      - publisher-service
+      - redis
