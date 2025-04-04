@@ -4,7 +4,7 @@ export default function App() {
   const [stockData, setStockData] = useState({});
 
   useEffect(() => {
-    const ws = new WebSocket("ws://broker-service:8080");
+    const ws = new WebSocket("ws://localhost:8080");
 
     ws.onmessage = (event) => {
       const { company, price, timestamp } = JSON.parse(event.data);
