@@ -13,9 +13,10 @@ console.log("WebSocket server running on ws://localhost:8080");
 
 wss.on("connection", (ws) => {
   console.log("Client connected");
-
+  console.log("Total connected clients -> ", wss.clients.length);
   ws.on("close", () => {
     console.log("Client disconnected");
+    console.log("Total connected clients -> ", wss.clients.length);
   });
 });
 
@@ -23,12 +24,10 @@ wss.on("connection", (ws) => {
 redis.subscribe(channelName);
 
 redis.on("message", (channel, message) => {
-  console.log("Broker: Received msg");
   if (channel === channelName) {
     // Broadcast to all connected clients
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
-        console.log("Broker: Sent to connected client");
         client.send(message);
       }
     });
