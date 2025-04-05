@@ -23,6 +23,10 @@ function generateStockData() {
   return data;
 }
 
+console.log(
+  "setting timeout for events as " + Number(process.env.timeout) + " or "
+);
+
 setInterval(() => {
   const data = generateStockData();
   redis.publish(channelName, data);
