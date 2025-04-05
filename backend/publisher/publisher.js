@@ -27,11 +27,11 @@ console.log(
   "setting timeout for events as " +
     process.env.timeout +
     " or " +
-    Number(process.env.timeout)
+    parseInt(process.env.timeout)
 );
 
 setInterval(() => {
   const data = generateStockData();
   redis.publish(channelName, data);
   console.log(`Published ${data} to ${channelName}`);
-}, Number(process.env.timeout) || 2500);
+}, parseInt(process.env.timeout) || 2500);
