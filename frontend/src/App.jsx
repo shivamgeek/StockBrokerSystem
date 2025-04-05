@@ -23,7 +23,7 @@ export default function App() {
       <h1 className="text-3xl font-bold mb-6 text-center">📈 RTSP</h1>
       <h2>Last Update: {lastUpdated}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {Object.entries(stockData).map(([company, { price, timestamp }]) => (
+        {Object.entries(stockData).map(([company, { price }]) => (
           <div
             key={company}
             className="bg-white rounded-2xl shadow-md p-4 transition hover:scale-105"
