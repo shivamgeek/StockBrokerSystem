@@ -41,7 +41,7 @@ services:
 
   publisher-service4:
     build: ./backend/publisher
-    container_name: publisher-container3
+    container_name: publisher-container4
     depends_on:
       - redis-service
     environment:
