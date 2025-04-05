@@ -21,7 +21,7 @@ services:
     depends_on:
       - redis-service
     environment:
-      - timeout="1000"
+      - timeout=1000
 
   publisher-service2:
     build: ./backend/publisher
@@ -29,7 +29,7 @@ services:
     depends_on:
       - redis-service
     environment:
-      - timeout="1500"
+      - timeout=1500
 
   publisher-service3:
     build: ./backend/publisher
@@ -37,7 +37,7 @@ services:
     depends_on:
       - redis-service
     environment:
-      - timeout="2000"
+      - timeout=2000
 
   publisher-service4:
     build: ./backend/publisher
@@ -45,7 +45,7 @@ services:
     depends_on:
       - redis-service
     environment:
-      - timeout="3000"
+      - timeout=3000
 
   # frontend-service:
   #   build: ./frontend
