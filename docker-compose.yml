@@ -15,8 +15,8 @@ services:
     ports:
       - "8080:80" # Expose this to your frontend<host:container>
     depends_on:
-      - broker1
-      - broker2
+      - broker-service1
+      - broker-service2
 
   broker-service1:
     build: ./backend/broker
