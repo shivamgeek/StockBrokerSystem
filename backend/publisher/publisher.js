@@ -23,7 +23,12 @@ function generateStockData() {
   return data;
 }
 
-console.log("setting timeout for events as " + process.env.timeout + " or ");
+console.log(
+  "setting timeout for events as " +
+    process.env.timeout +
+    " or " +
+    Number(process.env.timeout)
+);
 
 setInterval(() => {
   const data = generateStockData();
