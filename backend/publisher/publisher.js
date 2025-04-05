@@ -27,4 +27,4 @@ setInterval(() => {
   const data = generateStockData();
   redis.publish(channelName, data);
   console.log(`Published ${data} to ${channelName}`);
-}, 3000);
+}, Number(process.env.timeout) || 2500);

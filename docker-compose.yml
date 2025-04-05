@@ -20,12 +20,32 @@ services:
     container_name: publisher-container1
     depends_on:
       - redis-service
+    environment:
+      - timeout="1000"
 
   publisher-service2:
     build: ./backend/publisher
     container_name: publisher-container2
     depends_on:
       - redis-service
+    environment:
+      - timeout="1500"
+
+  publisher-service3:
+    build: ./backend/publisher
+    container_name: publisher-container3
+    depends_on:
+      - redis-service
+    environment:
+      - timeout="2000"
+
+  publisher-service4:
+    build: ./backend/publisher
+    container_name: publisher-container3
+    depends_on:
+      - redis-service
+    environment:
+      - timeout="3000"
 
   # frontend-service:
   #   build: ./frontend

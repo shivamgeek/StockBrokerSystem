@@ -6,7 +6,7 @@ export default function App() {
 
   useEffect(() => {
     const ws = new WebSocket(
-      "ws://ip172-18-0-101-cvnuuf8l2o9000cd2un0-8080.direct.labs.play-with-docker.com/"
+      "ws://ip172-18-0-55-cvocge291nsg0096oql0-8080.direct.labs.play-with-docker.com/"
     );
 
     ws.onmessage = (event) => {
@@ -15,7 +15,7 @@ export default function App() {
       setLastupdated(timestamp);
     };
 
-    // return () => ws.close();
+    return () => ws.close();
   }, []);
 
   return (
